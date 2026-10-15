@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c66w2lotxloj6"]
+
+[ext_resource type="ArrayMesh" uid="uid://ndljxbxr02eu" path="res://assets/ball-red.glb" id="1_t2h2o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jgc2f"]
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=624403866]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1610611831]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)
+shape = SubResource("SphereShape3D_jgc2f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=220239737]
+mesh = ExtResource("1_t2h2o")

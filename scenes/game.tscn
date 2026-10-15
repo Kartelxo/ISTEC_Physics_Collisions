@@ -1,3 +1,59 @@
 [gd_scene format=3 uid="uid://cp606m0pi6otd"]
 
+[ext_resource type="MeshLibrary" uid="uid://b66j80a7cfisw" path="res://assets/tiles/tiles.tres" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://c66w2lotxloj6" path="res://scenes/playerscene.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://h53l3ioa5eko" path="res://scenes/playerscene.gd" id="3_lnu2h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yqjtg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_lnu2h"]
+sky_material = SubResource("ProceduralSkyMaterial_yqjtg")
+
+[sub_resource type="Environment" id="Environment_lbhrr"]
+background_mode = 2
+sky = SubResource("Sky_lnu2h")
+
 [node name="Game" type="Node3D" unique_id=559845273]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1065370869]
+environment = SubResource("Environment_lbhrr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=830976886]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, -1.3400826, 6.801799, 0.39692497)
+light_energy = 0.525
+light_indirect_energy = 1.11
+light_volumetric_fog_energy = 3.455
+light_specular = 2.505
+shadow_enabled = true
+shadow_bias = 1.882
+shadow_normal_bias = 1.02
+shadow_transmittance_bias = 3.535
+shadow_blur = 3.564
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1444798087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.212349, 4.8415756, 5.7448096)
+fov = 95.0
+near = 0.009
+
+[node name="GridMap" type="GridMap" parent="." unique_id=2011615565]
+mesh_library = ExtResource("1_uwrxv")
+cell_size = Vector3(0.5, 0.5, 0.5)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65529, 655387, 65535, 65531, 15, 262143, 65533, 69, 393213, 6, 1441890, 393211, 6, 1048674, 393210, 6, 1441878, 393215, 6, 47, 655349, 6, 1441890, 655347, 6, 1441890, 655345, 6, 1048620, 655343, 6, 655406, 655343, 8, 655364, 655350, 6, 1048632)
+}
+metadata/_editor_floor_ = Vector3(0, 5, 0)
+
+[node name="flags" type="GridMap" parent="." unique_id=1002390856]
+mesh_library = ExtResource("1_uwrxv")
+cell_size = Vector3(0.5, 0.5, 0.5)
+data = {
+"cells": PackedInt32Array(29, 65524, 655381, -1, 65529, 21, 131071, 65534, 1048694, -1, 65534, 1048694, -131073, 65534, 1048694, -65537, 65531, 1048694, -196609, 65531, 1048694, 262143, 6, 1048694, 131071, 6, 118, -1, 6, 118, 524277, 6, 118, 393205, 6, 118, 262133, 6, 118, 131061, 6, 118, 589807, 8, 112, 655343, 8, 118, 524271, 8, 118, 393199, 8, 118, 262127, 8, 118, 131055, 8, 118)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="RigidBody3D2" parent="." unique_id=624403866 instance=ExtResource("2_yqjtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.23262, 5.057807, 4.224728)
+script = ExtResource("3_lnu2h")
